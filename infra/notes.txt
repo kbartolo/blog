@@ -1,0 +1,1 @@
+Deployments and services can be define in same file, nevertheless you can make each in separate files

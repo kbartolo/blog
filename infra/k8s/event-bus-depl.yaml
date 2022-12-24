@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: event-bus-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: event-bus
+  template:
+    metadata:
+      labels:
+        app: event-bus
+    spec:
+      containers:
+        - name: event-bus
+          image: kbartolo23/event-bus
+---
+# For services, if type attribute isn't specified it takes type: ClusterIp as default value
+apiVersion: v1
+kind: Service
+metadata:
+  name: event-bus-clusterip-srv
+spec:
+  selector:
+    app: event-bus
+  ports:
+    - name: event-bus
+      protocol: TCP
+      port: 2000
+      targetPort: 2000
