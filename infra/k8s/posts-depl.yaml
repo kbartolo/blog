@@ -14,14 +14,15 @@ spec:
     spec:
       containers:
         - name: posts
-          image: kbartolo23/posts-app
+          image: kbartolo23/posts
 ---
+# This is a Cluster Ip, only changes type property to ClusterIP
 apiVersion: v1
 kind: Service
 metadata:
   name: posts-clusterip-srv
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: posts
   ports:
