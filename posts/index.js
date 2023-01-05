@@ -11,18 +11,18 @@ const posts = {}; //simulate db
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get("/posts", (req, res) => {
+/* app.get("/posts", (req, res) => {
   res.send(posts);
-});
+}); */
 
-app.post("/posts", async (req, res) => {
+app.post("/posts/create", async (req, res) => {
   const id = randomBytes(4).toString("hex");
   const { title } = req.body;
 
   posts[id] = { id, title };
 
   //Emitting an event to Event Bus
-  await axios.post("http://localhost:2000/events", {
+  await axios.post("http://event-bus-clusterip-srv:2000/events", {
     type: "PostCreated",
     data: { id, title },
   });

@@ -66,7 +66,7 @@ app.listen(PORT, async () => {
   // Sincying missed events, so when starting up the app we make a request to event bus
   // to get all missed events over time
   try {
-    const res = await axios.get("http://localhost:2000/events");
+    const res = await axios.get("http://event-bus-clusterip-srv:2000/events");
     // console.log("res ", res);
     for (let event of res.data) {
       console.log("Processing event: ", event.type);

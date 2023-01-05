@@ -19,21 +19,25 @@ app.post("/events", (req, res) => {
 
   events.push(event);
   //Post Microservice Event
-  axios.post("http://localhost:4000/events", event).catch((err) => {
+  axios.post("http://posts-clusterip-srv:4000/events", event).catch((err) => {
     console.log(err.message);
   });
   //Comment Microservice Event
-  axios.post("http://localhost:5000/events", event).catch((err) => {
-    console.log(err.message);
-  });
+  axios
+    .post("http://comments-clusterip-srv:5000/events", event)
+    .catch((err) => {
+      console.log(err.message);
+    });
   //Query Microservice Event
-  axios.post("http://localhost:4500/events", event).catch((err) => {
+  axios.post("http://query-clusterip-srv:4500/events", event).catch((err) => {
     console.log(err.message);
   });
   //Moderation Microservice Event
-  axios.post("http://localhost:3600/events", event).catch((err) => {
-    console.log(err.message);
-  });
+  axios
+    .post("http://moderation-clusterip-srv:3600/events", event)
+    .catch((err) => {
+      console.log(err.message);
+    });
   res.send({ status: "OK" });
 });
 

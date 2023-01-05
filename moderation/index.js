@@ -20,7 +20,7 @@ app.post("/events", async (req, res) => {
       status,
     };
 
-    await axios.post("http://localhost:2000/events", {
+    await axios.post("http://event-bus-clusterip-srv:2000/events", {
       type: "CommentModerated",
       data: comment,
     });

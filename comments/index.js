@@ -27,7 +27,7 @@ app.post("/posts/:id/comments", async (req, res) => {
   comments[id].push({ id: commentId, content, status: "pending" });
 
   //Emitting an event to Event Bus, changing type of event
-  await axios.post("http://localhost:2000/events", {
+  await axios.post("http://event-bus-clusterip-srv:2000/events", {
     type: "CommentCreated",
     data: {
       id: commentId,
@@ -50,7 +50,7 @@ app.post("/events", async (req, res) => {
     comment.status = status;
     console.log("type === CommentModerated " + comment);
 
-    await axios.post("http://localhost:2000/events", {
+    await axios.post("http://event-bus-clusterip-srv:2000/events", {
       type: "CommentUpdated",
       data,
     });

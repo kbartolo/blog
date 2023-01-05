@@ -5,7 +5,7 @@ function CommentCreate({ postId }) {
   const [comment, setComment] = useState("");
   const onCreateComment = async (event) => {
     event.preventDefault();
-    const url = `http://localhost:5000/posts/${postId}/comments`;
+    const url = `http://posts.com/posts/${postId}/comments`;
     await axios.post(url, { content: comment });
   };
 

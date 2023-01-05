@@ -7,7 +7,7 @@ function PostCreate() {
   const onCreate = async (event) => {
     event.preventDefault();
     if (!title) return;
-    const url = "http://localhost:4000/posts";
+    const url = "http://posts.com/posts/create";
     await axios.post(url, { title });
   };
 
