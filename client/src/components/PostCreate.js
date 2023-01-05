@@ -13,7 +13,7 @@ function PostCreate() {
 
   return (
     <form>
-      <h1>Create a Post</h1>
+      <h1>Create a Post!!!!</h1>
       <div style={{ marginTop: 10 }}>Title</div>
       <div style={{ marginTop: 10 }}>
         <input
